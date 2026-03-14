@@ -12,6 +12,10 @@ export default function About() {
             alt="Muzuvukile"
             className="about-image"
             loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+            width="180"
+            height="180"
           />
         </div>
         <div className="about-content">

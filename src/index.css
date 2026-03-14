@@ -79,6 +79,14 @@ a {
   padding: 0 15px;
 }
 
+.project-section,
+.about-section,
+.experience-section,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
 @media (max-width: 768px) {
   .container {
     max-width: 94%;
