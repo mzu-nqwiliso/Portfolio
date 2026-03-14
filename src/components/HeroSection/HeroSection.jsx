@@ -17,7 +17,7 @@ export default function HeroSection({ Title, openForWork, techStack }) {
             style={{ "--status-color": statusColor }}
           ></div>
           <span className="dot-text">
-            {openForWork ? "Available for work" : "Not Available for work"}
+            {openForWork ? "Open to opportunities" : "Not Available for work"}
           </span>
         </div>
         <Skills techStack={techStack} />
