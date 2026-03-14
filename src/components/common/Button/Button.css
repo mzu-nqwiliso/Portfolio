@@ -66,3 +66,24 @@
   transform: none;
   box-shadow: none;
 }
+
+@media (max-width: 768px) {
+  .button.project-type-design {
+    font-size: var(--font-size-xs);
+  }
+
+  .button.project-type-design .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .project .play-icon {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
+}

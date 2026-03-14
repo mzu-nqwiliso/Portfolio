@@ -79,10 +79,19 @@ a {
   padding: 0 15px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .container {
-    max-width: 95%;
+    max-width: 94%;
   }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 94%;
+  }
+}
+
+@media (min-width: 1025px) {
 }
 
 button {
@@ -96,6 +105,8 @@ ul {
 }
 
 .section-header {
+  width: 100%;
+  text-align: start;
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-base);
@@ -120,4 +131,17 @@ ul {
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    font-size: var(--font-size-sm);
+    text-align: start;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-header {
+    font-size: var(--font-size-base);
+  }
 }

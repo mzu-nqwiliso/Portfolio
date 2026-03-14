@@ -62,17 +62,18 @@
   }
 
   .menu {
+    width: 90%;
     flex-direction: column;
     position: absolute;
     top: 60px;
-    left: 0;
+    left: 10px;
     right: 0;
-    background-color: #ffffff;
+    background-color: var(--pure-white);
     padding: 1rem 2rem;
     display: none;
     gap: 1rem;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(122, 122, 112, 0.1);
     transform: translateY(-20px);
     opacity: 0;
     transition: all 0.3s ease;

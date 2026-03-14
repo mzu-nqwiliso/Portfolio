@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="footer container">
+    <footer className="footer container" id="contact">
       <div className="footer-top">
         <div className="glow-circle">
           <a href="mailto:mzu.nqwiliso@gmail.com">mzu.nqwiliso@gmail.com</a>

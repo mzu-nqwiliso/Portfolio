@@ -8,6 +8,7 @@ import {
   FaVolumeUp,
 } from "react-icons/fa";
 import "./VideoModel.css";
+import useLockBodyScroll from "../../hooks/useLockBodyScroll";
 
 function getEmbedUrl(url) {
   if (!url) return "";
@@ -45,6 +46,7 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
   const embedUrl = useMemo(() => getEmbedUrl(video), [video]);
   const isCustomVideo = Boolean(video && !embedUrl);
   const videoRef = useRef(null);
+  useLockBodyScroll(true);
 
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
@@ -58,12 +60,8 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
     };
 
     document.addEventListener("keydown", handleEscape);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = previousOverflow;
     };
   }, [onClose]);
 

@@ -5,9 +5,25 @@
   gap: 3rem;
 }
 
-
 .project-section .projects-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .project-section {
+    gap: 1.25rem;
+    padding: 0;
+  }
+
+  .project-section .projects-grid {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
 }
