@@ -4,8 +4,6 @@ import {
   FaExpand,
   FaPause,
   FaPlay,
-  FaVolumeMute,
-  FaVolumeUp,
 } from "react-icons/fa";
 import "./VideoModel.css";
 import useLockBodyScroll from "../../hooks/useLockBodyScroll";
@@ -49,8 +47,6 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
   useLockBodyScroll(true);
 
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -71,8 +67,6 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
 
     const onLoadedMetadata = () => {
       setDuration(player.duration || 0);
-      setVolume(player.volume ?? 1);
-      setIsMuted(player.muted);
     };
 
     const onTimeUpdate = () => setProgress(player.currentTime || 0);
@@ -112,26 +106,6 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
     setProgress(nextTime);
   };
 
-  const handleVolume = (event) => {
-    const player = videoRef.current;
-    if (!player) return;
-
-    const nextVolume = Number(event.target.value);
-    player.volume = nextVolume;
-    player.muted = nextVolume === 0;
-
-    setVolume(nextVolume);
-    setIsMuted(nextVolume === 0);
-  };
-
-  const toggleMute = () => {
-    const player = videoRef.current;
-    if (!player) return;
-
-    player.muted = !player.muted;
-    setIsMuted(player.muted);
-  };
-
   const toggleFullScreen = () => {
     const player = videoRef.current;
     if (!player) return;
@@ -159,7 +133,6 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
               src={video}
               autoPlay
               playsInline
-              muted={isMuted}
             />
           ) : (
             <div className="video-empty-state">No video URL provided</div>
@@ -185,10 +158,6 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
             />
 
             <span className="video-time">{formatTime(duration)}</span>
-
-            <button className="video-control-btn" onClick={toggleMute}>
-              {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-            </button>
           </div>
         )}
       </div>
