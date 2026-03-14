@@ -52,7 +52,7 @@ export default function Header({ links, buttonText }) {
         text={buttonText}
         onClick={() =>
           window.open(
-            "https://drive.google.com/file/d/1n_kIM4UJu87JDWelhCJmPeqy6q2buQJd/view?usp=sharing",
+            "https://drive.google.com/file/d/1zqC1aJ6wvogKPtbnZXXE79ZST89x8J7f/view?usp=drive_link",
             "_blank",
           )
         }
