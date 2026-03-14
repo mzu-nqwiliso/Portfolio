@@ -19,5 +19,3 @@ Components are organized under `src/components` with each component in its own f
 The landing page reference image is stored at `public/images/Landing Page.png`.
 
 ![Landing Page Screenshot](./public/images/Landing%20Page.png)
-
-Feel free to customize the layout, styles and content to make it your own.
