@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import {
-  FaExpand,
   FaPause,
   FaPlay,
 } from "react-icons/fa";
@@ -44,9 +44,10 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
   const embedUrl = useMemo(() => getEmbedUrl(video), [video]);
   const isCustomVideo = Boolean(video && !embedUrl);
   const videoRef = useRef(null);
+  const lastProgressRef = useRef(0);
   useLockBodyScroll(true);
 
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -66,10 +67,20 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
     if (!player || !isCustomVideo) return;
 
     const onLoadedMetadata = () => {
-      setDuration(player.duration || 0);
+      const nextDuration = player.duration || 0;
+      setDuration(nextDuration);
+      lastProgressRef.current = 0;
+      setProgress(0);
     };
 
-    const onTimeUpdate = () => setProgress(player.currentTime || 0);
+    const onTimeUpdate = () => {
+      const nextTime = player.currentTime || 0;
+      const delta = Math.abs(nextTime - lastProgressRef.current);
+      if (delta >= 0.25 || nextTime === 0) {
+        lastProgressRef.current = nextTime;
+        setProgress(nextTime);
+      }
+    };
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
 
@@ -106,19 +117,7 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
     setProgress(nextTime);
   };
 
-  const toggleFullScreen = () => {
-    const player = videoRef.current;
-    if (!player) return;
-
-    if (document.fullscreenElement) {
-      document.exitFullscreen();
-      return;
-    }
-
-    player.requestFullscreen();
-  };
-
-  return (
+  return createPortal(
     <div className="video-overlay" onClick={onClose}>
       <button className="video-close-btn" onClick={onClose}>
         ×
@@ -126,13 +125,23 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
 
       <div className="video-model" onClick={(e) => e.stopPropagation()}>
         <div className="video-media-container">
-          {video ? (
+          {embedUrl ? (
+            <iframe
+              className="video-media"
+              src={embedUrl}
+              title={title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : video ? (
             <video
               className="video-media"
               ref={videoRef}
               src={video}
               autoPlay
               playsInline
+              preload="metadata"
             />
           ) : (
             <div className="video-empty-state">No video URL provided</div>
@@ -161,7 +170,8 @@ export default function VideoModel({ video = "", title = "Project", onClose }) {
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

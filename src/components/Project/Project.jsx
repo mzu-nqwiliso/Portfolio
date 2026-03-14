@@ -32,7 +32,15 @@ export default function Project({ project, index }) {
       <div className="project-content">
         <div className="project-logo">
           <div className="logo-image">
-            <img src={logo} alt={title} className="logo" loading="lazy" />
+            <img
+              src={logo}
+              alt={title}
+              className="logo"
+              loading="lazy"
+              decoding="async"
+              width="24"
+              height="24"
+            />
           </div>
           <span className="project-name">{title}</span>
         </div>
@@ -51,7 +59,13 @@ export default function Project({ project, index }) {
         />
       </div>
       <div className="image-container">
-        <img src={image} alt={title} loading="lazy" />
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
       </div>
       {openModel && (
         <VideoModel

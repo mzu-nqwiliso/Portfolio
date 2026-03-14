@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../common/Button/Button";
 import "./Header.css";
@@ -7,22 +7,50 @@ import { HiMenuAlt2 } from "react-icons/hi";
 export default function Header({ links, buttonText }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
+  const activeLinkRef = useRef("#home");
 
   // Scroll listener to update active link
   useEffect(() => {
-    const handleScroll = () => {
-      links.forEach((link) => {
-        const section = document.querySelector(link.path);
-        if (section) {
-          const top = section.getBoundingClientRect().top;
-          if (top <= 100 && top >= -section.offsetHeight + 100) {
-            setActiveLink(link.path);
-          }
+    const sections = links
+      .map((link) => ({
+        path: link.path,
+        element: document.querySelector(link.path),
+      }))
+      .filter((item) => item.element);
+
+    let ticking = false;
+
+    const updateActiveLink = () => {
+      ticking = false;
+      let nextActive = activeLinkRef.current;
+
+      for (const item of sections) {
+        const top = item.element.getBoundingClientRect().top;
+        if (top <= 100 && top >= -item.element.offsetHeight + 100) {
+          nextActive = item.path;
+          break;
         }
-      });
+      }
+
+      if (nextActive !== activeLinkRef.current) {
+        activeLinkRef.current = nextActive;
+        setActiveLink(nextActive);
+      }
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateActiveLink);
+    };
+
+    updateActiveLink();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [links]);
 
   return (
