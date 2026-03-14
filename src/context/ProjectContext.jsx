@@ -21,7 +21,7 @@ export const ProjectProvider = ({ children }) => {
       description:
         "Modern luxury chair store powered by HTML, CSS & JavaScript. Clean design meets smooth, responsive functionality.",
       image:
-        "https://res.cloudinary.com/dmvrtwdp0/image/upload/v1772614173/Sitewise_1_zlsefu.png",
+        "https://res.cloudinary.com/dmvrtwdp0/image/upload/v1773507245/light_nm54fa.png",
       techStack: ["HTML", "CSS", "JavaScript"],
       link: "https://www.fennic.site/",
       logo: "https://res.cloudinary.com/dmvrtwdp0/image/upload/v1772614557/sitewise-logo_ixgm8b.png",
