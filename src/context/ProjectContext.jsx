@@ -30,7 +30,7 @@ export const ProjectProvider = ({ children }) => {
     {
       title: "Fiscora",
       description:
-        "Modern personal finance tracker crafted in Figma. Sleek mobile UI meets effortless budget control and spending clarity.",
+        "A modern personal finance tracker designed in Figma, combining a clean mobile interface with simple budget and spending insights.",
       image:
         "https://res.cloudinary.com/dmvrtwdp0/image/upload/v1772614173/fiscora-mockup_ageuml.webp",
       techStack: ["Figma", "Mobile Design"],
