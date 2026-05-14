@@ -24,7 +24,7 @@ export default function Footer() {
           </li>
           <li className="link">
             <NavLink
-              to="https://drive.google.com/file/d/1HHFAOQ6ts_rNjeNNPUWGFa8OX8RYdK7s/view?usp=drive_link"
+              to="https://drive.google.com/file/d/11Gyd7TCJSTqhCkUo55g3WIBBAcgueWXz/view?usp=sharing"
               target="_blank"
             >
               Resume
