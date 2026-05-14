@@ -80,7 +80,7 @@ export default function Header({ links, buttonText }) {
         text={buttonText}
         onClick={() =>
           window.open(
-            "https://drive.google.com/file/d/1HHFAOQ6ts_rNjeNNPUWGFa8OX8RYdK7s/view?usp=drive_link",
+            "https://drive.google.com/file/d/11Gyd7TCJSTqhCkUo55g3WIBBAcgueWXz/view?usp=sharing",
             "_blank",
           )
         }
