@@ -14,6 +14,25 @@ export default function Experience() {
 
   const experiences = [
     {
+      role: "Junior Developer",
+      company: "Discovery Health - Seconded By Sambe Consulting",
+      status: "present",
+      startYear: 2026,
+      endYear: currentYear,
+      techStack: [
+        "MongoDB",
+        "Angular",
+        "ReactJs",
+        "GitLab",
+        "REST API",
+        "NodeJs",
+        "KeyCloak",
+      ],
+      responsibilities: [
+        "I develop and maintain web applications using Angular and React, while also working on backend services with Node.js and MongoDB. I collaborate with cross-functional teams to implement new features and ensure the security of our applications using KeyCloak.",
+      ],
+    },
+    {
       role: "Junior Consultant: Business Intelligence & Data Analytics",
       company: "Sambe Consulting",
       status: "present",
@@ -29,7 +48,7 @@ export default function Experience() {
         "T-SQL",
       ],
       responsibilities: [
-        "I develop data pipelines and business intelligence dashboards using SQL Server, SSIS, and Power BI, while also building modern web applications with React.",
+        "I design and implement data solutions using SQL Server, Power BI, and SSIS to help clients make informed business decisions. I also develop interactive dashboards with React.js and perform data analysis using Python and T-SQL.",
       ],
     },
   ];
