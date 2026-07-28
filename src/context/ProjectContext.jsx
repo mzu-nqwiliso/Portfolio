@@ -23,7 +23,7 @@ export const ProjectProvider = ({ children }) => {
       image:
         "https://res.cloudinary.com/dmvrtwdp0/image/upload/v1773507245/light_nm54fa.png",
       techStack: ["HTML", "CSS", "JavaScript"],
-      link: "https://www.fennic.site/",
+      link: "https://luxeseat.netlify.app/",
       logo: "https://res.cloudinary.com/dmvrtwdp0/image/upload/v1772614557/sitewise-logo_ixgm8b.png",
       type: "website",
     },
