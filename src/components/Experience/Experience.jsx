@@ -14,8 +14,8 @@ export default function Experience() {
 
   const experiences = [
     {
-      role: "Junior Developer",
-      company: "Discovery Limited - Seconded By Sambe Consulting",
+      role: "Junior Consultant",
+      company: "Sambe Consulting",
       status: "present",
       startYear: 2026,
       endYear: currentYear,
