@@ -59,7 +59,7 @@
 }
 
 .text-muted {
-  color: #a8a8a8;
+  color: var(--primary-color);
 }
 
 .text-strong {
