@@ -39,7 +39,7 @@ export default function App() {
         openForWork={openForWork}
         Title={
           <>
-            Hi, I’m Muzuvukile, a
+            Hi, I’m Muzuvukile, a{" "}
             <span className="highlight">Software Developer</span> building
             scalable apps with thoughtful design.
           </>
