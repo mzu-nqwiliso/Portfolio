@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./Experience.css";
 
@@ -7,9 +8,9 @@ export default function Experience() {
   const workingExperience = (status, startYear, endYear) => {
     if (status === "present") {
       return currentYear - startYear;
-    } else {
-      return endYear - startYear;
     }
+
+    return endYear - startYear;
   };
 
   const experiences = [
@@ -33,11 +34,11 @@ export default function Experience() {
       ],
     },
     {
-      role: "Junior Consultant: Business Intelligence & Data Analytics",
+      role: "Graduate : Business Intelligence & Data Analytics",
       company: "Sambe Consulting",
-      status: "present",
+      status: "completed",
       startYear: 2025,
-      endYear: currentYear,
+      endYear: 2025,
       techStack: [
         "SQL Server",
         "Power BI",
@@ -55,11 +56,16 @@ export default function Experience() {
 
   const enrichedExperiences = experiences.map((exp) => ({
     ...exp,
-    period: `${exp.startYear} - ${exp.status === "present" ? "Present" : exp.endYear}`,
+    period:
+      exp.startYear === exp.endYear
+        ? `${exp.startYear}`
+        : `${exp.startYear} - ${
+            exp.status === "present" ? "Present" : exp.endYear
+          }`,
     yearsOfExperience: workingExperience(
       exp.status,
       exp.startYear,
-      exp.endYear,
+      exp.endYear
     ),
     monthsOfExperience:
       workingExperience(exp.status, exp.startYear, exp.endYear) * 12,
@@ -68,23 +74,35 @@ export default function Experience() {
   return (
     <section className="experience-section container" id="experience">
       <h2 className="section-header">Experience</h2>
+
       <div className="experience-wrapper">
         {enrichedExperiences.map((exp) => (
-          <div className="experience-item" key={exp.id}>
+          <div className="experience-item" key={exp.role}>
             <div className="experience-content-left">
               <h3 className="experience-role">{exp.role}</h3>
+
               <div className="experience-company">
-                <h4 className="experience-company-name">{exp.company}</h4>
-                <p className="experience-company-period">{exp.period}</p>
+                <h4 className="experience-company-name">
+                  {exp.company}
+                </h4>
+
+                <p className="experience-company-period">
+                  {exp.period}
+                </p>
               </div>
+
               <div className="experience-tech-stack">
                 {exp.techStack.map((tech) => (
-                  <span key={tech} className="experience-tech-stack-item">
+                  <span
+                    key={tech}
+                    className="experience-tech-stack-item"
+                  >
                     {tech}
                   </span>
                 ))}
               </div>
             </div>
+
             <div className="experience-content-right">
               <div className="experience-content-right-item">
                 <div className="experience-responsibilities">
