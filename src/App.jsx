@@ -40,7 +40,7 @@ export default function App() {
         Title={
           <>
             Hi, I’m Muzuvukile, a{" "}
-            <span className="highlight">Software Developer</span> building
+            <span className="highlight">Full-Stack Developer</span> building
             scalable apps with thoughtful design.
           </>
         }
